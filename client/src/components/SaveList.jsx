@@ -9,13 +9,6 @@ export default function SaveList (props) {
   const drop = (e) => {
     e.preventDefault();
     const exerciseId = e.dataTransfer.getData('exerciseId');
-    // const card_data = e.dataTransfer.getData('card_data');
-
-    // const card = document.getElementById(card_id);
-    // card.style.display = 'block';
-
-    // e.target.appendChild(card);
-
     saveExercise(exerciseId);
   }
 
