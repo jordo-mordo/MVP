@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { IoIosClose } from 'react-icons/io';
 
-export default function ExerciseCard({exercise, saved}) {
+export default function ExerciseCard({exercise, saved, updateBigImg}) {
+
   const dragStart = (e, exerciseId) => {
     const target = e.target;
     e.dataTransfer.setData('exerciseId', exerciseId);
@@ -18,7 +19,7 @@ export default function ExerciseCard({exercise, saved}) {
       onDragStart={(e) => dragStart(e, exercise.id)}
       onDragOver={dragOver}
     >
-      <ExerciseImg src={exercise.gifUrl} />
+      <ExerciseImg  onClick={() => updateBigImg(exercise.gifUrl)} src={exercise.gifUrl} />
       <div style={{ paddingLeft: '10px', wordWrap: 'break-all' }}>
         <a
           href={`https://www.youtube.com/results?search_query=${exercise.name.replace(
@@ -37,6 +38,8 @@ export default function ExerciseCard({exercise, saved}) {
     </Container>
   );
 }
+
+
 
 const ExerciseImg = styled.img`
   width: auto;
@@ -73,5 +76,9 @@ const Container = styled.div`
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  h2{
+    font-size: 100%;
   }
 `;

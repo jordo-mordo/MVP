@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { AiOutlineLike } from 'react-icons/ai';
 import ExerciseCard from './ExerciseCard.jsx';
 
-export default function ExerciseList({ exercises, bodyPart }) {
+export default function ExerciseList({ exercises, bodyPart, updateBigImg }) {
   return (
     <Container>
       <h1 style={{ textTransform: 'capitalize' }}>{bodyPart + ' '}Exercises</h1>
@@ -14,6 +14,7 @@ export default function ExerciseList({ exercises, bodyPart }) {
             key={exercise.id}
             exercise={exercise}
             saved={false}
+            updateBigImg={updateBigImg}
           />
         ))}
       </List>

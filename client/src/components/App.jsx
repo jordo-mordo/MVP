@@ -20,6 +20,7 @@ const fetchData = (bodyPart) => {
 export default function App() {
   const [bodyPart, setBodyPart] = useState('');
   const [exercises, setExercises] = useState([]);
+  const [bigImg, setBigImg] = useState(null);
 
   useEffect(() => {
     setBodyPart('waist');
@@ -37,28 +38,57 @@ export default function App() {
     setBodyPart(bodyPart);
   };
 
-  return (
-    <MainContainer>
-      <ContentContainer>
-        <ModelContainer>
+  const updateBigImg = (imgUrl) => {
+    setBigImg(imgUrl);
+  };
 
-      <Title>CLICK WHERE IT HURTS</Title>
-          <Model updateBodyPart={updateBodyPart} bodyPart={bodyPart} />
-        </ModelContainer>
-        {bodyPart.length >= 1 && (
-          <ExerciseList id="ExerciseList" exercises={exercises} bodyPart={bodyPart}/>
-        )}
-        <SaveList />
-      </ContentContainer>
-    </MainContainer>
+  return (
+    <>
+      {bigImg && (
+        <ImgModal onClick={() => setBigImg(null)}>
+          <img src={bigImg} />
+        </ImgModal>
+      )}
+      <MainContainer>
+        <ContentContainer>
+          <ModelContainer>
+            <Title>CLICK WHERE IT HURTS</Title>
+            <Model updateBodyPart={updateBodyPart} bodyPart={bodyPart} />
+          </ModelContainer>
+          {bodyPart.length >= 1 && (
+            <ExerciseList
+              updateBigImg={updateBigImg}
+              id="ExerciseList"
+              exercises={exercises}
+              bodyPart={bodyPart}
+            />
+          )}
+          <SaveList />
+        </ContentContainer>
+      </MainContainer>
+    </>
   );
 }
+const ImgModal = styled.div`
+  position: absolute;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, .8);
+  z-index: 3;
+
+  img{
+
+  }
+`;
 
 const Title = styled.h1`
   color: white;
   position: relative;
   margin: auto;
-  margin-bottom:10px;
+  margin-bottom: 10px;
   text-align: center;
   font-size: 3em;
 `;
@@ -76,5 +106,5 @@ const MainContainer = styled.div`
 
 const ModelContainer = styled.div`
   height: '100%';
-  width:50%;
+  width: 50%;
 `;
