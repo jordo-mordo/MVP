@@ -12,7 +12,6 @@ import ExerciseList from './ExerciseList.jsx';
 import SaveList from './SaveList.jsx';
 
 const fetchData = (bodyPart) => {
-  console.log('fetch body part is ', bodyPart);
   return Axios.get(`/exercises/${bodyPart}`)
     .then(({ data }) => data)
     .catch((err) => console.log(err));
@@ -47,7 +46,7 @@ export default function App() {
           <Model updateBodyPart={updateBodyPart} bodyPart={bodyPart} />
         </ModelContainer>
         {bodyPart.length >= 1 && (
-          <ExerciseList id="ExerciseList" exercises={exercises} />
+          <ExerciseList id="ExerciseList" exercises={exercises} bodyPart={bodyPart}/>
         )}
         <SaveList />
       </ContentContainer>
@@ -67,7 +66,7 @@ const Title = styled.h1`
 const ContentContainer = styled.div`
   display: flex;
   grid-template-columns: 1fr 4fr;
-  height: 80vh;
+  height: 95vh;
 `;
 
 const MainContainer = styled.div`

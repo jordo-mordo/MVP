@@ -3,41 +3,37 @@ import styled from 'styled-components';
 import { AiOutlineLike } from 'react-icons/ai';
 import ExerciseCard from './ExerciseCard.jsx';
 
-export default function ExerciseList({ exercises }) {
-
+export default function ExerciseList({ exercises, bodyPart }) {
   return (
-    <List>
-      {exercises.map((exercise) => (
-        <ExerciseCard
-          id={'card' + JSON.stringify(exercise.id)}
-          key={exercise.id}
-          // draggable={true}
-          // onDragStart={(e) => dragStart(e, exercise.id)}
-          // onDragOver={dragOver}
-          exercise = {exercise}
-        >
-          {/* <ExerciseImg draggable={false} src={exercise.gifUrl} />
-          <div style={{ paddingLeft: '10px', wordWrap: 'break-all' }}>
-            <h2>{exercise.name}</h2>
-            <p>Equipment: {exercise.equipment} </p>
-            <p>Target: {exercise.target}</p>
-
-            <StyledLike />
-          </div> */}
-        </ExerciseCard>
-      ))}
-    </List>
+    <Container>
+      <h1 style={{ textTransform: 'capitalize' }}>{bodyPart + ' '}Exercises</h1>
+      <List>
+        {exercises.map((exercise) => (
+          <ExerciseCard
+            id={'card' + JSON.stringify(exercise.id)}
+            key={exercise.id}
+            exercise={exercise}
+            saved={false}
+          />
+        ))}
+      </List>
+    </Container>
   );
 }
 
 const List = styled.div`
-  width: 25%;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: start;
-  justify-content: space-around;
-  padding: 0 40px;
+  height:100%;
+  flex-direction: column;
+  align-items: normal;
   overflow-y: scroll;
   overflow-x: hidden;
+`;
+
+const Container = styled.div`
+
+padding: 0 40px;
+width: 25%;
+overflow:hidden;
+
 `;

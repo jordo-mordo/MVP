@@ -2,4 +2,38 @@ body {
   margin: 0;
   background-color: #BF3939;
   font-family: 'Poppins', sans-serif;
+  background: linear-gradient(-45deg, #BF3939, #AD3561, #884179);
+  background-size: 200% 200%;
+  animation: change 10s ease-in-out infinite;
+}
+
+@keyframes change {
+  0%{
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100%{
+    background-position: 0 50%;
+  }
+}
+
+h1 {
+  color: rgb(255 180 180);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius:30px;
 }

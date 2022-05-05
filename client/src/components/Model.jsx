@@ -25,24 +25,23 @@ function Box() {
 export default function Model({updateBodyPart, bodyPart}) {
   const color = 'rgb(0,255,0)'
   const clickHandler = () => {
-    console.log('test');
+    // console.log('test');
   }
-
 
   return (
     <Canvas style={{ height: '100%', cursor:'pointer' }}>
       <mesh position={[0,-3.3,0]} rotation={[0,0,0]} scale={1.5}>
         <Head onClick={() => updateBodyPart('neck')} bodyPart={bodyPart} color={color}/>
         <Neck onClick={() => updateBodyPart('neck')} bodyPart={bodyPart} color={color}/>
-        <Back onClick={() => updateBodyPart('chest')} bodyPart={bodyPart} color={color}/>
-        <Chest onClick={() => updateBodyPart('back')} bodyPart={bodyPart} color={color}/>
-        <Shoulders onClick={() => updateBodyPart('shoulders')} bodyPart={bodyPart}/>
-        <Cardio onClick={() => updateBodyPart('cardio')} bodyPart={bodyPart}/>
-        <UpperArms onClick={() => updateBodyPart('upper arms')} bodyPart={bodyPart}/>
-        <LowerArms onClick={() => updateBodyPart('lower arms')} bodyPart={bodyPart}/>
-        <Waist onClick={() => updateBodyPart('waist')} bodyPart={bodyPart}/>
-        <UpperLegs onClick={() => updateBodyPart('upper legs')} bodyPart={bodyPart}/>
-        <LowerLegs onClick={() => updateBodyPart('lower legs')} bodyPart={bodyPart}/>
+        <Back onClick={() => updateBodyPart('back')} bodyPart={bodyPart} color={color}/>
+        <Chest onClick={() => updateBodyPart('chest')} bodyPart={bodyPart} color={color}/>
+        <Shoulders onClick={() => updateBodyPart('shoulders')} bodyPart={bodyPart} color={color}/>
+        <Cardio onClick={() => updateBodyPart('cardio')} bodyPart={bodyPart} color={color}/>
+        <UpperArms onClick={() => updateBodyPart('upper arms')} bodyPart={bodyPart} color={color}/>
+        <LowerArms onClick={() => updateBodyPart('lower arms')} bodyPart={bodyPart} color={color}/>
+        <Waist onClick={() => updateBodyPart('waist')} bodyPart={bodyPart} color={color}/>
+        <UpperLegs onClick={() => updateBodyPart('upper legs')} bodyPart={bodyPart} color={color}/>
+        <LowerLegs onClick={() => updateBodyPart('lower legs')} bodyPart={bodyPart} color={color}/>
       </mesh>
         {/* <Box /> */}
       <ambientLight intensity={0.5} />

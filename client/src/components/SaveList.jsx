@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Axios from 'axios';
 import ExerciseCard from './ExerciseCard.jsx';
@@ -22,19 +22,38 @@ export default function SaveList (props) {
     .catch((err) => console.log(err));
   }
 
-  console.log(exercises);
+  useEffect(() => {
+    Axios.get('/saved')
+    .then(({data}) => {
+      setExercises(data)
+    })
+    .catch(err => {throw err})
+  }, [])
+
   return(
     <Container onDrop={drop} onDragOver={dragOver}>
-      {exercises.map(exercise => (
-        <ExerciseCard exercise={exercise} />
-      ))}
+      <h1>Saved Exercises</h1>
+      <List>
+        {exercises.map(exercise => (
+          <ExerciseCard saved={true} key={exercise.id} exercise={exercise} />
+        ))}
+      </List>
     </Container>
   )
-
 }
 
 const Container = styled.div`
-  height: 100%;
   width:25%;
-  background: yellow;
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  overflow: hidden;
 `;
+
+const List = styled.div`
+  overflow-y: scroll;
+  overflow-x: hidden;
+`

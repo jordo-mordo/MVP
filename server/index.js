@@ -21,10 +21,18 @@ app.get('/exercises/:bodyPart', (req, res) => {
   .catch(err => {throw err});
 })
 
+app.get('/saved', (req, res) => {
+  // console.log('get request', savedExercises)
+  res.send(savedExercises);
+})
+
 app.post('/exercises/', (req, res) => {
   const exerciseId = req.body.id;
   findExerciseById(exerciseId)
-  .then(data => savedExercises.push(data[0]))
+  .then(data => {
+    savedExercises.push(data[0])
+  })
+  // .then(() => console.log('servers saved data is ',savedExercises))
   .then(() => res.send(savedExercises))
   .catch(err => {throw err});
 })
