@@ -1,5 +1,5 @@
 {
-  "name": "react-template",
+  "name": "Pain-Aid",
   "version": "1.0.0",
   "description": "Template for Applications using React, Babel, Webpack, Express.js & Dotenv",
   "main": "server/index.js",
@@ -9,7 +9,7 @@
     "test": "jest",
     "build": "webpack --mode=production"
   },
-  "author": "Sabrina Gortz",
+  "author": "Jordan Moore",
   "license": "UNLICENSED",
   "dependencies": {
     "axios": "^0.26.1",
