@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
-  "name": "MVP",
-=======
   "name": "Pain-Aid",
->>>>>>> 0cc5fdd4143ab48d3d702b186299564b96038273
   "version": "1.0.0",
-  "description": "Template for Applications using React, Babel, Webpack, Express.js & Dotenv",
   "main": "server/index.js",
   "scripts": {
     "start": "nodemon server/index.js",
