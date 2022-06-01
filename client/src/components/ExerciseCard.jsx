@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { IoIosClose } from 'react-icons/io';
+import Axios from 'axios';
 
 export default function ExerciseCard({exercise, saved, updateBigImg}) {
 
@@ -12,6 +13,12 @@ export default function ExerciseCard({exercise, saved, updateBigImg}) {
   const dragOver = (e) => {
     e.stopPropagation();
   };
+
+  const deleteExercise = (id) => {
+    Axios.put('/saved', {id : id})
+    .then(() => console.log('deleted exercise'))
+    .catch((err) => {throw err});
+  }
 
   return (
     <Container
@@ -46,6 +53,7 @@ const ExerciseImg = styled.img`
   height: 100%;
   display: block;
   border-radius: 20px;
+  cursor: pointer;
 `;
 
 const Close = styled(IoIosClose)`

@@ -1,7 +1,7 @@
 var router = require('./routes.js');
 const express = require ('express');
 const path = require("path");
-const {findExercices, findExerciseById} = require('../db');
+const {findExercices, findExerciseById, deleteExercise} = require('../db');
 
 const app = express();
 
@@ -26,11 +26,25 @@ app.get('/saved', (req, res) => {
   res.send(savedExercises);
 })
 
+app.put('/saved', (req, res) => {
+  const exerciseId = req.body.id;
+  deleteExercise(exerciseId)
+  .then(() => res.end())
+  .catch((err) => {throw err});
+})
+
 app.post('/exercises/', (req, res) => {
   const exerciseId = req.body.id;
   findExerciseById(exerciseId)
   .then(data => {
+    let add = true;
+    let stringedExercises = savedExercises.map(exercise => (JSON.stringify(exercise)))
+    if (stringedExercises.includes(JSON.stringify(data[0]))) {
+      add = false;
+    }
+    if (add) {
     savedExercises.push(data[0])
+    }
   })
   // .then(() => console.log('servers saved data is ',savedExercises))
   .then(() => res.send(savedExercises))

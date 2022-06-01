@@ -26,5 +26,10 @@ const findExerciseById = (id) => {
   .catch(err => {throw err});
 }
 
+const deleteExercise = (id) => {
+  return Exercise.findOneAndDelete({id})
+}
+
 exports.findExercices = findExercices;
 exports.findExerciseById = findExerciseById;
+exports.deleteExercise = deleteExercise;
